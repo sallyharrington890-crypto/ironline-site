@@ -370,7 +370,7 @@
 
 <script>
 const translations = {
-  en: { title: "Ironline — Never Miss Another Booking" },
+  en: {},
   vi: {
     title: "Ironline — Không Bao Giờ Bỏ Lỡ Lịch Hẹn",
     tag: "Lễ tân tự động cho các tiệm nail và beauty bar tại LA",
@@ -618,7 +618,7 @@ function applyLanguage(lang) {
   const dict = translations[lang] || base;
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     const key = el.getAttribute('data-i18n');
-    const value = dict[key];
+    const value = (key in dict) ? dict[key] : base[key];
     if (value !== undefined) {
       el.innerHTML = value;
     }
@@ -632,6 +632,15 @@ function applyLanguage(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Capture the page's original English text as the "en" dictionary so that
+  // switching back to English always works instantly, without a page reload.
+  var enDict = { title: document.title };
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (!(key in enDict)) enDict[key] = el.innerHTML;
+  });
+  translations.en = enDict;
+
   var saved = 'en';
   try { saved = localStorage.getItem('ironline_lang') || 'en'; } catch (e) {}
   applyLanguage(saved);
