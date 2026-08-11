@@ -4,50 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ironline — Never Miss Another Booking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #c2255c;
-    --navy-light: #d8447a;
-    --accent: #ff5c93;
-    --accent-dark: #e63d7a;
-    --bg: #fff5f8;
-    --text: #3a2430;
-    --muted: #9c7686;
+    --forest: #445640;
+    --forest-light: #64775a;
+    --pink: #d98fa0;
+    --pink-dark: #bf7387;
+    --cream: #faf5ec;
+    --cream-card: #fffaf2;
+    --ink: #3b3227;
+    --muted: #8e8370;
+    --line: #e7ddc9;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.55;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
   }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, .logo { font-family: 'Playfair Display', Georgia, serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
   header.top {
-    background: var(--navy);
+    background: var(--forest);
     color: #fff;
     padding: 18px 0;
   }
-  header.top .wrap { display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
-  .logo span { color: var(--accent); }
-  .tag { font-size: 13px; color: #fbd2e2; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .logo { font-size: 21px; font-weight: 700; letter-spacing: 0.3px; display: flex; align-items: center; gap: 8px; }
+  .logo span { color: var(--pink); }
+  .logo svg { flex-shrink: 0; }
+  .header-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .tag { font-size: 13px; color: #e7ecdf; }
+  .lang-select {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .lang-select option { color: var(--ink); background: #fff; }
 
   .hero {
-    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+    background: linear-gradient(180deg, var(--forest) 0%, var(--forest-light) 100%);
     color: #fff;
-    padding: 64px 0 56px;
+    padding: 60px 0 48px;
     text-align: center;
   }
+  .leaf-flourish { display: flex; align-items: center; justify-content: center; gap: 14px; opacity: 0.6; margin-bottom: 18px; }
+  .leaf-flourish .fl-line { width: 46px; height: 1px; background: currentColor; }
   .hero h1 {
-    font-size: 34px;
-    line-height: 1.25;
+    font-size: 36px;
+    line-height: 1.3;
     margin-bottom: 16px;
-    font-weight: 800;
+    font-weight: 700;
   }
   .hero p.sub {
     font-size: 18px;
-    color: #fce3ee;
+    color: #eef1e6;
     max-width: 560px;
     margin: 0 auto 32px;
   }
@@ -61,50 +82,57 @@
     display: inline-block;
     padding: 14px 26px;
     border-radius: 8px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
     text-decoration: none;
     transition: transform 0.1s ease;
   }
   .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-primary { background: var(--pink); color: #fff; }
+  .btn-primary:hover { background: var(--pink-dark); }
   .btn-secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
 
   section { padding: 56px 0; }
-  section.alt { background: #fff; }
+  section.alt { background: var(--cream-card); }
+
+  .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 0 36px; color: var(--forest-light); opacity: 0.55; }
+  .divider .d-line { width: 56px; height: 1px; background: currentColor; }
 
   .demo-box {
     background: #fff;
-    border: 2px dashed var(--accent);
-    border-radius: 12px;
-    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px;
     max-width: 620px;
     margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(68,86,64,0.08);
   }
   .demo-box .tag-note {
-    display: inline-block;
-    background: var(--bg);
-    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+    color: var(--forest);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.4px;
     text-transform: uppercase;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 999px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .transcript { text-align: left; }
   .transcript .line { margin-bottom: 12px; font-size: 15px; }
-  .transcript .who { font-weight: 700; color: var(--navy); }
-  .transcript .who.ai { color: var(--accent-dark); }
-  .demo-box p.note { color: var(--muted); font-size: 14px; margin-top: 16px; text-align: center; }
+  .transcript .who { font-weight: 700; color: var(--forest); }
+  .transcript .who.ai { color: var(--pink-dark); }
+  .demo-box p.note { color: var(--muted); font-size: 14px; margin-top: 18px; text-align: center; }
 
   h2 {
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
     margin-bottom: 8px;
-    color: var(--navy);
+    color: var(--forest);
+    font-weight: 700;
   }
   .section-sub {
     text-align: center;
@@ -120,35 +148,39 @@
     gap: 24px;
   }
   .step {
-    background: var(--bg);
-    border-radius: 10px;
-    padding: 24px 20px;
+    background: var(--cream-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px 20px;
     text-align: center;
   }
-  .step .num {
-    width: 34px; height: 34px;
+  .step .icon {
+    width: 52px; height: 52px;
     border-radius: 50%;
-    background: var(--navy);
+    background: var(--forest);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    margin: 0 auto 14px;
+    margin: 0 auto 16px;
   }
-  .step h3 { font-size: 17px; margin-bottom: 8px; color: var(--navy); }
+  .step:nth-child(2) .icon { background: var(--pink); }
+  .step:nth-child(3) .icon { background: var(--forest-light); }
+  .step h3 { font-size: 17px; margin-bottom: 8px; color: var(--forest); font-weight: 700; }
   .step p { font-size: 14px; color: var(--muted); }
 
   .pilot {
-    background: var(--navy);
+    background: var(--forest);
     color: #fff;
-    border-radius: 16px;
-    padding: 40px 32px;
+    border-radius: 18px;
+    padding: 42px 32px;
     max-width: 640px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
   .pilot .badge {
     display: inline-block;
-    background: var(--accent);
+    background: var(--pink);
     color: #fff;
     font-size: 13px;
     font-weight: 700;
@@ -161,34 +193,35 @@
   .pilot ul { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 28px; }
   .pilot li {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.14);
     font-size: 15px;
     display: flex;
     gap: 10px;
   }
   .pilot li:last-child { border-bottom: none; }
-  .pilot li::before { content: "✓"; color: var(--accent); font-weight: 800; }
-  .pilot .price-line { font-size: 15px; color: #fce3ee; margin-bottom: 24px; }
+  .pilot li::before { content: "✓"; color: var(--pink); font-weight: 800; }
+  .pilot .price-line { font-size: 15px; color: #eef1e6; margin-bottom: 24px; }
   .pilot .price-line strong { color: #fff; font-size: 20px; }
 
   .faq { max-width: 640px; margin: 0 auto; }
-  .faq-item { margin-bottom: 22px; }
-  .faq-item h3 { font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .faq-item { margin-bottom: 22px; padding-left: 18px; border-left: 2px solid var(--pink); }
+  .faq-item h3 { font-size: 16px; color: var(--forest); margin-bottom: 6px; font-weight: 700; }
   .faq-item p { color: var(--muted); font-size: 15px; }
 
   footer {
-    background: var(--navy);
-    color: #fce3ee;
+    background: var(--forest);
+    color: #eef1e6;
     text-align: center;
     padding: 40px 0;
     font-size: 14px;
   }
   footer .btn { margin-top: 16px; }
-  footer .email { margin-top: 14px; color: #f3a8c7; }
+  footer .email { margin-top: 14px; color: #d9c9cf; }
 
   @media (max-width: 640px) {
     .steps { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 27px; }
+    .hero h1 { font-size: 28px; }
+    header.top .wrap { justify-content: center; text-align: center; }
   }
 </style>
 </head>
@@ -196,58 +229,81 @@
 
 <header class="top">
   <div class="wrap">
-    <div class="logo">Iron<span>line</span></div>
-    <div class="tag">Automated front desk for LA nail salons &amp; beauty bars</div>
+    <div class="logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg>
+      Iron<span>line</span>
+    </div>
+    <div class="header-right">
+      <div class="tag" data-i18n="tag">Automated front desk for LA nail salons &amp; beauty bars</div>
+      <select class="lang-select" id="langSelect">
+        <option value="en">English</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="hy">Հայերեն</option>
+        <option value="ru">Русский</option>
+        <option value="ko">한국어</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <h1>Every missed call is a client you never see again.</h1>
-    <p class="sub">Ironline answers the phone while you're mid-appointment, books the slot straight into your calendar, and texts you a confirmation — so a busy chair schedule stops costing you bookings.</p>
+    <div class="leaf-flourish">
+      <span class="fl-line"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg>
+      <span class="fl-line"></span>
+    </div>
+    <h1 data-i18n="hero_h1">Every missed call is a client you never see again.</h1>
+    <p class="sub" data-i18n="hero_sub">Ironline answers the phone while you're mid-appointment, books the slot straight into your calendar, and texts you a confirmation — so a busy chair schedule stops costing you bookings.</p>
     <div class="cta-row">
-      <a href="tel:+16268738550" class="btn btn-secondary">Call the Live Demo: (626) 873-8550</a>
-      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary">Book a 15-Min Call</a>
+      <a href="tel:+16268738550" class="btn btn-secondary" data-i18n="cta_call">Call the Live Demo: (626) 873-8550</a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary" data-i18n="cta_book">Book a 15-Min Call</a>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <h2>What a call actually sounds like</h2>
-    <p class="section-sub">Call <a href="tel:+16268738550">(626) 873-8550</a> right now to hear it live, or read a sample of the kind of conversation it's built to handle below.</p>
+    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <h2 data-i18n="s2_h2">What a call actually sounds like</h2>
+    <p class="section-sub" data-i18n="s2_sub">Call <a href="tel:+16268738550">(626) 873-8550</a> right now to hear it live, or read a sample of the kind of conversation it's built to handle below.</p>
     <div class="demo-box">
-      <span class="tag-note">Sample conversation</span>
+      <span class="tag-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+        <span data-i18n="demo_tag">Sample conversation</span>
+      </span>
       <div class="transcript">
-        <div class="line"><span class="who">Caller:</span> Hi, do you have anything open today around 2pm for a gel manicure?</div>
-        <div class="line"><span class="who ai">Ironline:</span> Let me check... yes, I have 2:15pm open. Want me to book that for you?</div>
-        <div class="line"><span class="who">Caller:</span> Yes please.</div>
-        <div class="line"><span class="who ai">Ironline:</span> You're all set for 2:15pm. I'll text you a confirmation now.</div>
+        <div class="line"><span class="who" data-i18n="caller_label">Caller:</span> <span data-i18n="line1">Hi, do you have anything open today around 2pm for a gel manicure?</span></div>
+        <div class="line"><span class="who ai" data-i18n="ai_label">Ironline:</span> <span data-i18n="line2">Let me check... yes, I have 2:15pm open. Want me to book that for you?</span></div>
+        <div class="line"><span class="who" data-i18n="caller_label">Caller:</span> <span data-i18n="line3">Yes please.</span></div>
+        <div class="line"><span class="who ai" data-i18n="ai_label">Ironline:</span> <span data-i18n="line4">You're all set for 2:15pm. I'll text you a confirmation now.</span></div>
       </div>
-      <p class="note">This is a live, working demo — call <a href="tel:+16268738550">(626) 873-8550</a> and try it yourself, or text it a question.</p>
+      <p class="note" data-i18n="demo_note">This is a live, working demo — call <a href="tel:+16268738550">(626) 873-8550</a> and try it yourself, or text it a question.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>How it works</h2>
-    <p class="section-sub">No new phone number to give out, no complicated setup on your end.</p>
+    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <h2 data-i18n="s3_h2">How it works</h2>
+    <p class="section-sub" data-i18n="s3_sub">No new phone number to give out, no complicated setup on your end.</p>
     <div class="steps">
       <div class="step">
-        <div class="num">1</div>
-        <h3>Forward missed calls</h3>
-        <p>You keep your existing number. Calls you can't get to — mid-service, after hours, during a rush — forward to your Ironline line in seconds.</p>
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C11 21 3 13 3 5a2 2 0 0 1 2-2z"/></svg></div>
+        <h3 data-i18n="step1_h3">Forward missed calls</h3>
+        <p data-i18n="step1_p">You keep your existing number. Calls you can't get to — mid-service, after hours, during a rush — forward to your Ironline line in seconds.</p>
       </div>
       <div class="step">
-        <div class="num">2</div>
-        <h3>AI books the slot</h3>
-        <p>It checks your availability and books directly into your calendar — no back-and-forth, no sticky notes, no double-booked chairs.</p>
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17"/><path d="M8 3v4M16 3v4"/><path d="M8.5 13.5l2 2 4-4"/></svg></div>
+        <h3 data-i18n="step2_h3">AI books the slot</h3>
+        <p data-i18n="step2_p">It checks your availability and books directly into your calendar — no back-and-forth, no sticky notes, no double-booked chairs.</p>
       </div>
       <div class="step">
-        <div class="num">3</div>
-        <h3>You get the confirmation</h3>
-        <p>Booking details land in your phone by text within seconds, so you always know what's on your schedule.</p>
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8.5 10l2 2 4-4"/></svg></div>
+        <h3 data-i18n="step3_h3">You get the confirmation</h3>
+        <p data-i18n="step3_p">Booking details land in your phone by text within seconds, so you always know what's on your schedule.</p>
       </div>
     </div>
   </div>
@@ -256,43 +312,44 @@
 <section class="alt">
   <div class="wrap">
     <div class="pilot">
-      <span class="badge">FOUNDING PILOT — 3 SPOTS ONLY</span>
-      <h2>Get in early, lock in the founding rate</h2>
-      <div class="price-line">
+      <span class="badge" data-i18n="pilot_badge">FOUNDING PILOT — 3 SPOTS ONLY</span>
+      <h2 data-i18n="pilot_h2">Get in early, lock in the founding rate</h2>
+      <div class="price-line" data-i18n="pilot_price">
         Normally $500 setup + $397/month.<br>
         <strong>Founding pilot: $99 setup + $197/month for 3 months.</strong>
       </div>
       <ul>
-        <li>24/7 AI call answering &amp; appointment booking</li>
-        <li>Missed-call recovery, built for busy chair schedules</li>
-        <li>Booking confirmations texted to you instantly</li>
-        <li>Direct line to me while we build this together</li>
-        <li>Founding rate locked in for life after the pilot</li>
+        <li data-i18n="pilot_li1">24/7 AI call answering &amp; appointment booking</li>
+        <li data-i18n="pilot_li2">Missed-call recovery, built for busy chair schedules</li>
+        <li data-i18n="pilot_li3">Booking confirmations texted to you instantly</li>
+        <li data-i18n="pilot_li4">Direct line to me while we build this together</li>
+        <li data-i18n="pilot_li5">Founding rate locked in for life after the pilot</li>
       </ul>
-      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary">Claim a Founding Spot</a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary" data-i18n="pilot_cta">Claim a Founding Spot</a>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Questions salon &amp; beauty bar owners actually ask</h2>
+    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <h2 data-i18n="faq_h2">Questions salon &amp; beauty bar owners actually ask</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>Will this feel robotic to my clients?</h3>
-        <p>It's built to sound like a real front-desk conversation, not a phone tree. And it only ever picks up calls you'd otherwise miss — it's a safety net, not a replacement for you.</p>
+        <h3 data-i18n="faq1_h3">Will this feel robotic to my clients?</h3>
+        <p data-i18n="faq1_p">It's built to sound like a real front-desk conversation, not a phone tree. And it only ever picks up calls you'd otherwise miss — it's a safety net, not a replacement for you.</p>
       </div>
       <div class="faq-item">
-        <h3>Do I have to switch booking software?</h3>
-        <p>No. During the pilot it books into a simple shared calendar — we'll figure out together whether it needs to connect to whatever you already use.</p>
+        <h3 data-i18n="faq2_h3">Do I have to switch booking software?</h3>
+        <p data-i18n="faq2_p">No. During the pilot it books into a simple shared calendar — we'll figure out together whether it needs to connect to whatever you already use.</p>
       </div>
       <div class="faq-item">
-        <h3>Do I have to give you access to my phone or accounts?</h3>
-        <p>No. You forward missed calls to a dedicated number in about 30 seconds — your real number never changes anywhere, and it's fully reversible.</p>
+        <h3 data-i18n="faq3_h3">Do I have to give you access to my phone or accounts?</h3>
+        <p data-i18n="faq3_p">No. You forward missed calls to a dedicated number in about 30 seconds — your real number never changes anywhere, and it's fully reversible.</p>
       </div>
       <div class="faq-item">
-        <h3>What happens after the 3-month pilot?</h3>
-        <p>You keep your founding rate for as long as you stay — no surprise price hikes for early partners.</p>
+        <h3 data-i18n="faq4_h3">What happens after the 3-month pilot?</h3>
+        <p data-i18n="faq4_p">You keep your founding rate for as long as you stay — no surprise price hikes for early partners.</p>
       </div>
     </div>
   </div>
@@ -300,16 +357,288 @@
 
 <footer>
   <div class="wrap">
-    <p>Ironline — Los Angeles</p>
-    <p>Built for independent nail salons, beauty bars, and personal care studios.</p>
-    <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary">Claim a Founding Spot</a>
+    <p data-i18n="footer_line1">Ironline — Los Angeles</p>
+    <p data-i18n="footer_line2">Built for independent nail salons, beauty bars, and personal care studios.</p>
+    <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary" data-i18n="pilot_cta">Claim a Founding Spot</a>
     <p class="email">hello@getironline.io &nbsp;·&nbsp; (626) 223-1848</p>
     <p class="email">1437 E Windsor Rd, Glendale, CA 91205</p>
-    <p class="email"><a href="legal.html" style="color:#f3a8c7;">Terms of Service</a> &nbsp;·&nbsp; <a href="legal.html#privacy" style="color:#f3a8c7;">Privacy Policy</a></p>
+    <p class="email"><a href="legal.html" style="color:#d9c9cf;" data-i18n="footer_terms">Terms of Service</a> &nbsp;·&nbsp; <a href="legal.html#privacy" style="color:#d9c9cf;" data-i18n="footer_privacy">Privacy Policy</a></p>
   </div>
 </footer>
 
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a7a98a2a8b7a425b36d9c68" data-source="WEB_USER"></script>
+
+<script>
+const translations = {
+  en: { title: "Ironline — Never Miss Another Booking" },
+  vi: {
+    title: "Ironline — Không Bao Giờ Bỏ Lỡ Lịch Hẹn",
+    tag: "Lễ tân tự động cho các tiệm nail và beauty bar tại LA",
+    hero_h1: "Mỗi cuộc gọi nhỡ là một khách hàng bạn mất vĩnh viễn.",
+    hero_sub: "Ironline trả lời điện thoại giúp bạn khi đang làm khách, đặt lịch thẳng vào lịch của bạn, và nhắn tin xác nhận cho khách — để lịch làm bận rộn không còn làm bạn mất khách.",
+    cta_call: "Gọi thử Demo trực tiếp: (626) 873-8550",
+    cta_book: "Đặt cuộc gọi 15 phút",
+    s2_h2: "Một cuộc gọi thực tế nghe như thế nào",
+    s2_sub: 'Gọi <a href="tel:+16268738550">(626) 873-8550</a> ngay bây giờ để nghe trực tiếp, hoặc đọc mẫu cuộc trò chuyện bên dưới.',
+    demo_tag: "Mẫu cuộc trò chuyện",
+    caller_label: "Khách gọi:",
+    ai_label: "Ironline:",
+    line1: "Chào, hôm nay khoảng 2 giờ chiều có còn chỗ trống để làm gel không ạ?",
+    line2: "Để tôi kiểm tra... dạ có, 2:15 chiều còn trống. Chị muốn tôi đặt lịch giúp không ạ?",
+    line3: "Dạ có, đặt giúp em nhé.",
+    line4: "Vậy là chị đã có lịch lúc 2:15 chiều. Tôi sẽ nhắn tin xác nhận cho chị ngay bây giờ.",
+    demo_note: 'Đây là bản demo thật, đang hoạt động — hãy gọi <a href="tel:+16268738550">(626) 873-8550</a> để thử, hoặc nhắn tin hỏi thử.',
+    s3_h2: "Cách hoạt động",
+    s3_sub: "Không cần đổi số điện thoại, không cần cài đặt phức tạp.",
+    step1_h3: "Chuyển tiếp cuộc gọi nhỡ",
+    step1_p: "Bạn vẫn giữ số điện thoại hiện tại. Những cuộc gọi bạn không bắt máy được — đang làm khách, ngoài giờ, giờ cao điểm — sẽ được chuyển đến số Ironline trong vài giây.",
+    step2_h3: "AI đặt lịch giúp bạn",
+    step2_p: "AI kiểm tra lịch trống và đặt thẳng vào lịch của bạn — không cần qua lại nhiều lần, không cần giấy note, không bị trùng lịch.",
+    step3_h3: "Bạn nhận được xác nhận",
+    step3_p: "Thông tin lịch hẹn sẽ được nhắn vào điện thoại của bạn trong vài giây, để bạn luôn biết lịch làm của mình.",
+    pilot_badge: "CHƯƠNG TRÌNH THỬ NGHIỆM — CHỈ CÒN 3 SUẤT",
+    pilot_h2: "Đăng ký sớm để giữ mức giá ưu đãi ban đầu",
+    pilot_price: 'Giá thường: $500 cài đặt + $397/tháng.<br><strong>Giá ưu đãi thử nghiệm: $99 cài đặt + $197/tháng trong 3 tháng.</strong>',
+    pilot_li1: "Trả lời điện thoại và đặt lịch bằng AI 24/7",
+    pilot_li2: "Không bỏ lỡ khách hàng, phù hợp với lịch làm bận rộn",
+    pilot_li3: "Xác nhận lịch hẹn được nhắn tin ngay lập tức",
+    pilot_li4: "Liên hệ trực tiếp với tôi trong quá trình chúng ta cùng xây dựng dịch vụ",
+    pilot_li5: "Giữ mức giá ưu đãi trọn đời sau khi chương trình thử nghiệm kết thúc",
+    pilot_cta: "Đăng ký suất ưu đãi",
+    faq_h2: "Những câu hỏi chủ tiệm nail & beauty bar thường hỏi",
+    faq1_h3: "Khách hàng có cảm thấy đây là robot không?",
+    faq1_p: "Hệ thống được thiết kế để nghe giống như một lễ tân thật, không phải máy trả lời tự động. Và nó chỉ bắt những cuộc gọi mà bạn không thể bắt được — đây là lưới an toàn, không phải để thay thế bạn.",
+    faq2_h3: "Tôi có phải đổi phần mềm đặt lịch không?",
+    faq2_p: "Không. Trong giai đoạn thử nghiệm, lịch hẹn sẽ được đặt vào một lịch chung đơn giản — chúng ta sẽ cùng tìm hiểu xem có cần kết nối với phần mềm bạn đang dùng hay không.",
+    faq3_h3: "Tôi có phải cho bạn quyền truy cập vào điện thoại hoặc tài khoản của tôi không?",
+    faq3_p: "Không. Bạn chỉ cần chuyển tiếp cuộc gọi nhỡ đến một số điện thoại riêng trong khoảng 30 giây — số điện thoại thật của bạn không thay đổi ở bất cứ đâu, và có thể hủy bất cứ lúc nào.",
+    faq4_h3: "Sau 3 tháng thử nghiệm thì sao?",
+    faq4_p: "Bạn sẽ giữ mức giá ưu đãi ban đầu miễn là bạn tiếp tục sử dụng dịch vụ — không tăng giá bất ngờ cho những khách hàng tham gia sớm.",
+    footer_line1: "Ironline — Los Angeles",
+    footer_line2: "Được xây dựng cho các tiệm nail, beauty bar và cơ sở chăm sóc cá nhân độc lập.",
+    footer_terms: "Điều khoản dịch vụ",
+    footer_privacy: "Chính sách bảo mật"
+  },
+  hy: {
+    title: "Ironline — Բնաւ մի կորսնցներ ամրագրում մը",
+    tag: "Ինքնաշարժ ընդունարան Լոս Անճելըսի եղունգի եւ գեղեցկութեան սրահներու համար",
+    hero_h1: "Ամէն կորսուած զանգ՝ յաճախորդ մըն է, զոր այլեւս պիտի չտեսնես։",
+    hero_sub: "Ironline-ը կը պատասխանէ հեռախօսին մինչ դուն զբաղած ես յաճախորդով, ժամադրութիւնը կ'արձանագրէ ուղղակիօրէն ձեր օրացոյցին մէջ, եւ SMS-ով հաստատում կ'ուղարկէ յաճախորդին։",
+    cta_call: "Զանգահարէ ուղիղ ցուցադրութեան՝ (626) 873-8550",
+    cta_book: "Ամրագրէ 15-վայրկեանանոց խօսակցութիւն",
+    s2_h2: "Ինչպէ՞ս կը հնչէ իրական զանգ մը",
+    s2_sub: 'Զանգահարէ <a href="tel:+16268738550">(626) 873-8550</a> հիմա՝ ուղղակիօրէն լսելու համար, կամ կարդա նմուշ խօսակցութիւն մը ներքեւ։',
+    demo_tag: "Նմուշ խօսակցութիւն",
+    caller_label: "Յաճախորդ.",
+    ai_label: "Ironline.",
+    line1: "Բարեւ, այսօր ժամը 2-ի մօտ ազատ ժամ ունի՞ք gel մանիկիւրի համար։",
+    line2: "Թոյլ տուր ստուգեմ... այո, ժամը 2:15-ը ազատ է։ Կ'ուզե՞ս արձանագրեմ քեզի համար։",
+    line3: "Այո, շնորհակալութիւն։",
+    line4: "Ամրագրուեցաւ ժամը 2:15-ի համար։ Հիմա հաստատում մը պիտի ղրկեմ SMS-ով։",
+    demo_note: 'Ասիկա իրական, աշխատող ցուցադրութիւն մըն է — զանգահարէ <a href="tel:+16268738550">(626) 873-8550</a> եւ փորձէ ինքդ, կամ SMS ուղարկէ հարցում մը։',
+    s3_h2: "Ինչպէ՞ս կ'աշխատի",
+    s3_sub: "Նոր հեռախօսահամար պէտք չէ տալ, բարդ կարգաւորում պէտք չէ ընել։",
+    step1_h3: "Փոխանցէ կորսուած զանգերը",
+    step1_p: "Կը պահես քու հին համարդ։ Զանգեր որոնց չես կրնար պատասխանել — մինչ յաճախորդով զբաղած, ժամերէն դուրս, կամ բազմազբաղ պահուն — կը փոխանցուին Ironline-ի գիծին քանի մը վայրկեանի մէջ։",
+    step2_h3: "AI-ն կ'ամրագրէ ժամադրութիւնը",
+    step2_p: "Ան կը ստուգէ ազատ ժամերդ եւ ուղղակիօրէն կ'արձանագրէ օրացոյցիդ մէջ — առանց երկար խօսակցութեան, առանց թուղթի նշումներու, առանց կրկնուող ամրագրումներու։",
+    step3_h3: "Դուն կը ստանաս հաստատումը",
+    step3_p: "Ամրագրման մանրամասնութիւնները քանի մը վայրկեանի մէջ SMS-ով կը հասնին քու հեռախօսիդ, որպէսզի միշտ գիտնաս ինչ կայ քու օրացոյցիդ մէջ։",
+    pilot_badge: "ՀԻՄՆԱԴԻՐ ՓՈՐՁԱՇՐՋԱՆ — ՄԻԱՅՆ 3 ՏԵՂ",
+    pilot_h2: "Միացիր վաղ ու պահէ հիմնադիր գինը",
+    pilot_price: 'Սովորաբար՝ $500 կարգաւորում + $397/ամիս։<br><strong>Հիմնադիր փորձաշրջան՝ $99 կարգաւորում + $197/ամիս, 3 ամսուայ համար։</strong>',
+    pilot_li1: "24/7 AI-ով զանգերու պատասխան եւ ժամադրութեան ամրագրում",
+    pilot_li2: "Կորսուած զանգերու վերականգնում, յարմարցուած զբաղած օրացոյցներու համար",
+    pilot_li3: "Ամրագրման հաստատումները ուղղակի SMS-ով",
+    pilot_li4: "Ուղիղ կապ ինծի հետ մինչ միասին կը կառուցենք ասիկա",
+    pilot_li5: "Հիմնադիր գինը ցկեանս պահուած՝ փորձաշրջանէն ետք",
+    pilot_cta: "Ամրագրէ հիմնադիր տեղդ",
+    faq_h2: "Հարցեր՝ որոնք եղունգի եւ գեղեցկութեան սրահի տէրերը իրապէս կու տան",
+    faq1_h3: "Իմ յաճախորդներուս ասիկա ռոպոթային պիտի թուի՞",
+    faq1_p: "Ան կառուցուած է որպէսզի հնչէ ինչպէս իրական ընդունարանի խօսակցութիւն, ոչ թէ հեռախօսային ծրագիր մը։ Ան միայն կը պատասխանէ այն զանգերուն, որոնց դուն այլապէս պիտի չկարենայիր պատասխանել — ասիկա անվտանգութեան ցանց մըն է, ոչ թէ քեզի փոխարինող։",
+    faq2_h3: "Պէտք է փոխե՞մ ամրագրման ծրագիրս",
+    faq2_p: "Ոչ։ Փորձաշրջանին ընթացքին ամրագրումները կ'ըլլան պարզ, ընդհանուր օրացոյցի մը մէջ — միասին պիտի որոշենք եթէ պէտք կայ միանալու քու գործածած ծրագիրիդ հետ։",
+    faq3_h3: "Պէտք է հասանելիութիւն տա՞մ իմ հեռախօսիս կամ հաշիւներուս",
+    faq3_p: "Ոչ։ Դուն միայն կը փոխանցես կորսուած զանգերը յատուկ համարի մը՝ շուրջ 30 վայրկեանի մէջ — քու իրական համարդ ոեւէ տեղ չի փոխուիր, եւ ամբողջովին կարելի է ետ դառնալ։",
+    faq4_h3: "Ի՞նչ կ'ըլլայ 3-ամսեայ փորձաշրջանէն ետք",
+    faq4_p: "Կը պահես հիմնադիր գինդ քանի դեռ կը շարունակես ծառայութիւնը — անակնկալ գնային բարձրացումներ չկան վաղ գործընկերներուն համար։",
+    footer_line1: "Ironline — Լոս Անճելըս",
+    footer_line2: "Կառուցուած՝ անկախ եղունգի սրահներու, գեղեցկութեան բարերու եւ անձնական խնամքի կեդրոններու համար։",
+    footer_terms: "Ծառայութեան պայմաններ",
+    footer_privacy: "Գաղտնիութեան քաղաքականութիւն"
+  },
+  ru: {
+    title: "Ironline — Никогда не теряйте запись",
+    tag: "Автоматическая ресепшн для нейл- и бьюти-салонов Лос-Анджелеса",
+    hero_h1: "Каждый пропущенный звонок — это клиент, которого вы больше не увидите.",
+    hero_sub: "Ironline отвечает на звонки, пока вы заняты клиентом, сразу записывает на приём в ваш календарь и отправляет клиенту СМС-подтверждение — так плотный график перестаёт стоить вам записей.",
+    cta_call: "Позвонить на демо-линию: (626) 873-8550",
+    cta_book: "Записаться на звонок на 15 минут",
+    s2_h2: "Как звучит реальный звонок",
+    s2_sub: 'Позвоните <a href="tel:+16268738550">(626) 873-8550</a> прямо сейчас, чтобы услышать вживую, или прочитайте пример разговора ниже.',
+    demo_tag: "Пример разговора",
+    caller_label: "Клиент:",
+    ai_label: "Ironline:",
+    line1: "Здравствуйте, есть ли сегодня свободное время около 14:00 на гель-маникюр?",
+    line2: "Секунду, проверю... да, свободно в 14:15. Записать вас?",
+    line3: "Да, пожалуйста.",
+    line4: "Готово, вы записаны на 14:15. Сейчас отправлю СМС с подтверждением.",
+    demo_note: 'Это настоящая, работающая демо-версия — позвоните <a href="tel:+16268738550">(626) 873-8550</a> и попробуйте сами, или напишите вопрос.',
+    s3_h2: "Как это работает",
+    s3_sub: "Не нужен новый номер телефона, не нужна сложная настройка.",
+    step1_h3: "Переадресация пропущенных звонков",
+    step1_p: "Вы сохраняете свой текущий номер. Звонки, на которые вы не успеваете ответить — во время работы с клиентом, в нерабочее время, в час пик — за секунды переадресуются на линию Ironline.",
+    step2_h3: "ИИ записывает на приём",
+    step2_p: "Система проверяет свободное время и записывает прямо в ваш календарь — без переписки, без бумажек, без двойных записей.",
+    step3_h3: "Вы получаете подтверждение",
+    step3_p: "Детали записи приходят вам на телефон по СМС за секунды, так что вы всегда знаете, что у вас в расписании.",
+    pilot_badge: "ПИЛОТНАЯ ПРОГРАММА — ТОЛЬКО 3 МЕСТА",
+    pilot_h2: "Присоединяйтесь раньше и зафиксируйте стартовую цену",
+    pilot_price: 'Обычно: $500 за настройку + $397/месяц.<br><strong>Пилотная цена: $99 за настройку + $197/месяц на 3 месяца.</strong>',
+    pilot_li1: "ИИ отвечает на звонки и записывает клиентов 24/7",
+    pilot_li2: "Возврат пропущенных звонков — специально для плотного графика",
+    pilot_li3: "Мгновенное СМС-подтверждение записи",
+    pilot_li4: "Прямая связь со мной, пока мы вместе всё настраиваем",
+    pilot_li5: "Стартовая цена сохраняется навсегда после пилота",
+    pilot_cta: "Занять место в пилотной программе",
+    faq_h2: "Вопросы, которые реально задают владельцы нейл- и бьюти-салонов",
+    faq1_h3: "Не покажется ли это моим клиентам роботизированным?",
+    faq1_p: "Система создана звучать как настоящий разговор на ресепшене, а не автоответчик. И она отвечает только на те звонки, которые вы бы всё равно пропустили — это подстраховка, а не замена вас.",
+    faq2_h3: "Нужно ли менять программу для записи?",
+    faq2_p: "Нет. Во время пилота запись идёт в простой общий календарь — вместе решим, нужно ли подключать её к тому, чем вы уже пользуетесь.",
+    faq3_h3: "Нужно ли давать доступ к моему телефону или аккаунтам?",
+    faq3_p: "Нет. Вы переадресуете пропущенные звонки на отдельный номер примерно за 30 секунд — ваш настоящий номер нигде не меняется, и всё это полностью обратимо.",
+    faq4_h3: "Что будет после 3-месячного пилота?",
+    faq4_p: "Вы сохраняете стартовую цену, пока остаётесь с нами — никаких неожиданных повышений для тех, кто присоединился рано.",
+    footer_line1: "Ironline — Лос-Анджелес",
+    footer_line2: "Создано для независимых нейл-салонов, бьюти-баров и студий по уходу за собой.",
+    footer_terms: "Условия обслуживания",
+    footer_privacy: "Политика конфиденциальности"
+  },
+  ko: {
+    title: "Ironline — 예약을 놓치지 마세요",
+    tag: "LA 네일 & 뷰티 살롱을 위한 자동 응대 서비스",
+    hero_h1: "놓친 전화 한 통이 곧 다시는 만날 수 없는 고객이 됩니다.",
+    hero_sub: "Ironline은 시술 중에도 대신 전화를 받고, 예약을 바로 캘린더에 기록하며, 고객에게 확인 문자를 보내드립니다 — 바쁜 일정 때문에 예약을 놓치는 일이 없도록.",
+    cta_call: "라이브 데모 전화: (626) 873-8550",
+    cta_book: "15분 상담 예약하기",
+    s2_h2: "실제 통화는 이렇게 진행됩니다",
+    s2_sub: '지금 <a href="tel:+16268738550">(626) 873-8550</a>로 전화해서 직접 들어보시거나, 아래 예시 대화를 읽어보세요.',
+    demo_tag: "예시 대화",
+    caller_label: "고객:",
+    ai_label: "Ironline:",
+    line1: "안녕하세요, 오늘 오후 2시쯤 젤 매니큐어 예약 가능할까요?",
+    line2: "확인해볼게요... 네, 2시 15분에 자리가 있습니다. 예약해드릴까요?",
+    line3: "네, 해주세요.",
+    line4: "2시 15분으로 예약 완료되었습니다. 바로 확인 문자를 보내드릴게요.",
+    demo_note: '이것은 실제로 작동하는 라이브 데모입니다 — <a href="tel:+16268738550">(626) 873-8550</a>으로 전화하거나 문자로 질문해보세요.',
+    s3_h2: "이렇게 작동합니다",
+    s3_sub: "새 전화번호가 필요 없고, 복잡한 설정도 없습니다.",
+    step1_h3: "놓친 전화 착신 전환",
+    step1_p: "기존 번호를 그대로 사용하시면 됩니다. 시술 중, 영업시간 외, 바쁠 때 받지 못한 전화가 몇 초 만에 Ironline 번호로 전환됩니다.",
+    step2_h3: "AI가 예약을 진행합니다",
+    step2_p: "예약 가능 여부를 확인하고 바로 캘린더에 기록합니다 — 번거로운 확인도, 메모지도, 이중 예약도 없습니다.",
+    step3_h3: "확인 문자를 받습니다",
+    step3_p: "예약 정보가 몇 초 안에 문자로 전송되어, 언제나 일정을 정확히 파악할 수 있습니다.",
+    pilot_badge: "파운딩 파일럿 — 단 3자리",
+    pilot_h2: "지금 참여하고 창립 가격을 고정하세요",
+    pilot_price: '일반가: 설치비 $500 + 월 $397.<br><strong>파일럿 특가: 설치비 $99 + 월 $197 (3개월간).</strong>',
+    pilot_li1: "24시간 AI 전화 응대 및 예약",
+    pilot_li2: "바쁜 일정에 맞춘 놓친 전화 복구",
+    pilot_li3: "즉시 문자로 예약 확인 전송",
+    pilot_li4: "함께 만들어가는 동안 저와의 직접 연락",
+    pilot_li5: "파일럿 이후에도 평생 유지되는 창립 가격",
+    pilot_cta: "파운딩 자리 신청하기",
+    faq_h2: "네일 & 뷰티 살롱 사장님들이 실제로 하는 질문",
+    faq1_h3: "고객이 로봇처럼 느끼지 않을까요?",
+    faq1_p: "실제 리셉션 응대처럼 느껴지도록 설계되었으며, 전화 자동응답 시스템이 아닙니다. 그리고 어차피 놓쳤을 전화만 받기 때문에 — 사장님을 대신하는 것이 아니라 안전망 역할을 합니다.",
+    faq2_h3: "예약 프로그램을 바꿔야 하나요?",
+    faq2_p: "아니요. 파일럿 기간에는 간단한 공용 캘린더에 예약이 기록되며, 기존에 사용하시는 시스템과 연동이 필요한지는 함께 논의해서 결정합니다.",
+    faq3_h3: "제 전화나 계정에 접근 권한을 드려야 하나요?",
+    faq3_p: "아니요. 놓친 전화를 전용 번호로 약 30초 만에 착신 전환하시면 됩니다 — 실제 번호는 어디에서도 바뀌지 않으며 언제든 되돌릴 수 있습니다.",
+    faq4_h3: "3개월 파일럿 이후에는 어떻게 되나요?",
+    faq4_p: "계속 이용하시는 한 창립 가격이 유지됩니다 — 초기 파트너에게 예상치 못한 가격 인상은 없습니다.",
+    footer_line1: "Ironline — 로스앤젤레스",
+    footer_line2: "독립 네일 살롱, 뷰티 바, 퍼스널 케어 스튜디오를 위해 만들어졌습니다.",
+    footer_terms: "이용약관",
+    footer_privacy: "개인정보 처리방침"
+  },
+  es: {
+    title: "Ironline — Nunca Pierdas Otra Cita",
+    tag: "Recepción automatizada para salones de uñas y belleza en LA",
+    hero_h1: "Cada llamada perdida es un cliente que no vuelves a ver.",
+    hero_sub: "Ironline contesta el teléfono mientras estás con un cliente, agenda la cita directamente en tu calendario y le envía un mensaje de confirmación — para que un horario ocupado deje de costarte clientes.",
+    cta_call: "Llamar a la demo en vivo: (626) 873-8550",
+    cta_book: "Agendar una llamada de 15 minutos",
+    s2_h2: "Así suena una llamada real",
+    s2_sub: 'Llama al <a href="tel:+16268738550">(626) 873-8550</a> ahora mismo para escucharlo en vivo, o lee un ejemplo de conversación abajo.',
+    demo_tag: "Conversación de ejemplo",
+    caller_label: "Cliente:",
+    ai_label: "Ironline:",
+    line1: "Hola, ¿tienen algo disponible hoy como a las 2pm para una manicura de gel?",
+    line2: "Déjame revisar... sí, tengo las 2:15pm disponible. ¿Quieres que te agende esa hora?",
+    line3: "Sí, por favor.",
+    line4: "Listo, quedaste agendada para las 2:15pm. Te voy a enviar una confirmación por mensaje de texto.",
+    demo_note: 'Esta es una demo real y en funcionamiento — llama al <a href="tel:+16268738550">(626) 873-8550</a> y pruébalo tú misma, o envía un mensaje con una pregunta.',
+    s3_h2: "Cómo funciona",
+    s3_sub: "No necesitas un número nuevo ni una configuración complicada.",
+    step1_h3: "Desvía las llamadas perdidas",
+    step1_p: "Conservas tu número actual. Las llamadas que no puedes contestar — mientras atiendes a un cliente, fuera de horario, en horas pico — se desvían a tu línea de Ironline en segundos.",
+    step2_h3: "La IA agenda la cita",
+    step2_p: "Revisa tu disponibilidad y agenda directamente en tu calendario — sin idas y vueltas, sin notas adhesivas, sin citas duplicadas.",
+    step3_h3: "Recibes la confirmación",
+    step3_p: "Los detalles de la cita llegan a tu teléfono por mensaje de texto en segundos, para que siempre sepas qué tienes agendado.",
+    pilot_badge: "PROGRAMA PILOTO FUNDADOR — SOLO 3 LUGARES",
+    pilot_h2: "Únete temprano y asegura la tarifa fundadora",
+    pilot_price: 'Normalmente: $500 de instalación + $397/mes.<br><strong>Piloto fundador: $99 de instalación + $197/mes durante 3 meses.</strong>',
+    pilot_li1: "Respuesta de llamadas y agendamiento con IA las 24/7",
+    pilot_li2: "Recuperación de llamadas perdidas, ideal para horarios ocupados",
+    pilot_li3: "Confirmaciones de citas enviadas por mensaje al instante",
+    pilot_li4: "Línea directa conmigo mientras construimos esto juntas",
+    pilot_li5: "Tarifa fundadora fija de por vida después del piloto",
+    pilot_cta: "Reclamar un lugar fundador",
+    faq_h2: "Preguntas que realmente hacen las dueñas de salones de uñas y belleza",
+    faq1_h3: "¿Se sentirá robótico para mis clientes?",
+    faq1_p: "Está diseñado para sonar como una recepción real, no como un menú telefónico automatizado. Y solo contesta las llamadas que de todos modos perderías — es una red de seguridad, no un reemplazo tuyo.",
+    faq2_h3: "¿Tengo que cambiar mi software de citas?",
+    faq2_p: "No. Durante el piloto, las citas se agendan en un calendario compartido simple — juntas decidiremos si es necesario conectarlo con lo que ya usas.",
+    faq3_h3: "¿Tengo que darles acceso a mi teléfono o cuentas?",
+    faq3_p: "No. Desvías las llamadas perdidas a un número dedicado en unos 30 segundos — tu número real nunca cambia en ningún lado, y es completamente reversible.",
+    faq4_h3: "¿Qué pasa después del piloto de 3 meses?",
+    faq4_p: "Mantienes tu tarifa fundadora mientras sigas con nosotros — sin aumentos de precio sorpresa para las socias que se unieron temprano.",
+    footer_line1: "Ironline — Los Ángeles",
+    footer_line2: "Creado para salones de uñas independientes, beauty bars y estudios de cuidado personal.",
+    footer_terms: "Términos de Servicio",
+    footer_privacy: "Política de Privacidad"
+  }
+};
+
+function applyLanguage(lang) {
+  const base = translations.en;
+  const dict = translations[lang] || base;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    const value = dict[key];
+    if (value !== undefined) {
+      el.innerHTML = value;
+    }
+  });
+  document.documentElement.lang = lang;
+  const titleText = dict.title || base.title;
+  if (titleText) document.title = titleText;
+  const sel = document.getElementById('langSelect');
+  if (sel) sel.value = lang;
+  try { localStorage.setItem('ironline_lang', lang); } catch (e) {}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = 'en';
+  try { saved = localStorage.getItem('ironline_lang') || 'en'; } catch (e) {}
+  applyLanguage(saved);
+  var sel = document.getElementById('langSelect');
+  if (sel) sel.addEventListener('change', function(e) { applyLanguage(e.target.value); });
+});
+</script>
 
 </body>
 </html>
