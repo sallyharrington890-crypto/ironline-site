@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ironline — Never Miss Another Fence or Gate Job</title>
+<title>Ironline — Never Miss Another Booking</title>
 <style>
   :root {
     --navy: #12233f;
@@ -79,18 +79,26 @@
     border: 2px dashed var(--accent);
     border-radius: 12px;
     padding: 28px;
-    text-align: center;
     max-width: 620px;
     margin: 0 auto;
   }
-  .demo-box .number {
-    font-size: 30px;
-    font-weight: 800;
-    color: var(--navy);
-    margin: 12px 0;
-    letter-spacing: 0.5px;
+  .demo-box .tag-note {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 16px;
   }
-  .demo-box p { color: var(--muted); font-size: 15px; }
+  .transcript { text-align: left; }
+  .transcript .line { margin-bottom: 12px; font-size: 15px; }
+  .transcript .who { font-weight: 700; color: var(--navy); }
+  .transcript .who.ai { color: var(--accent-dark); }
+  .demo-box p.note { color: var(--muted); font-size: 14px; margin-top: 16px; text-align: center; }
 
   h2 {
     font-size: 26px;
@@ -189,29 +197,33 @@
 <header class="top">
   <div class="wrap">
     <div class="logo">Iron<span>line</span></div>
-    <div class="tag">Automated front office for LA fence &amp; gate contractors</div>
+    <div class="tag">Automated front desk for LA nail salons &amp; beauty bars</div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <h1>Every missed call is a lost fence job.</h1>
-    <p class="sub">Ironline answers your phone 24/7, qualifies the lead, and gets you the details — even after hours, even on job sites, even when you're slammed.</p>
+    <h1>Every missed call is a client you never see again.</h1>
+    <p class="sub">Ironline answers the phone while you're mid-appointment, books the slot straight into your calendar, and texts you a confirmation — so a busy chair schedule stops costing you bookings.</p>
     <div class="cta-row">
-      <a href="tel:+13235437533" class="btn btn-primary">📞 Call the Live Demo</a>
-      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-secondary">Book a 15-Min Call</a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary">Book a 15-Min Call</a>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <h2>Try it yourself, right now</h2>
-    <p class="section-sub">This isn't a video or a mockup — it's a working AI phone line.</p>
+    <h2>What a call actually sounds like</h2>
+    <p class="section-sub">A live voice demo is in progress — here's a sample of the kind of conversation it's built to handle.</p>
     <div class="demo-box">
-      <p>Call the number below and pretend you're a homeowner asking about a fence or gate project for <strong>"Valley Fence &amp; Gate"</strong> (our demo contractor).</p>
-      <div class="number">(323) 543-7533</div>
-      <p>Watch how it qualifies the lead and sets up next steps — this is exactly what it'll do for your business.</p>
+      <span class="tag-note">Sample conversation</span>
+      <div class="transcript">
+        <div class="line"><span class="who">Caller:</span> Hi, do you have anything open today around 2pm for a gel manicure?</div>
+        <div class="line"><span class="who ai">Ironline:</span> Let me check... yes, I have 2:15pm open. Want me to book that for you?</div>
+        <div class="line"><span class="who">Caller:</span> Yes please.</div>
+        <div class="line"><span class="who ai">Ironline:</span> You're all set for 2:15pm. I'll text you a confirmation now.</div>
+      </div>
+      <p class="note">Full live demo line coming soon — book a call below to see it in person.</p>
     </div>
   </div>
 </section>
@@ -224,17 +236,17 @@
       <div class="step">
         <div class="num">1</div>
         <h3>Forward missed calls</h3>
-        <p>You keep your existing number. Missed or after-hours calls forward to your Ironline line in seconds — no equipment, no porting.</p>
+        <p>You keep your existing number. Calls you can't get to — mid-service, after hours, during a rush — forward to your Ironline line in seconds.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h3>AI answers &amp; qualifies</h3>
-        <p>It collects name, phone, city, project type, size, and timeline — and knows what to ask for fence vs. gate vs. repair jobs.</p>
+        <h3>AI books the slot</h3>
+        <p>It checks your availability and books directly into your calendar — no back-and-forth, no sticky notes, no double-booked chairs.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>You get the lead</h3>
-        <p>Full details land in your phone by text within seconds, ready for you to follow up and close.</p>
+        <h3>You get the confirmation</h3>
+        <p>Booking details land in your phone by text within seconds, so you always know what's on your schedule.</p>
       </div>
     </div>
   </div>
@@ -250,9 +262,9 @@
         <strong>Founding pilot: $99 setup + $197/month for 3 months.</strong>
       </div>
       <ul>
-        <li>24/7 AI call answering &amp; lead qualification</li>
-        <li>Missed-call recovery, built for fence &amp; gate jobs</li>
-        <li>Lead details texted to you instantly</li>
+        <li>24/7 AI call answering &amp; appointment booking</li>
+        <li>Missed-call recovery, built for busy chair schedules</li>
+        <li>Booking confirmations texted to you instantly</li>
         <li>Direct line to me while we build this together</li>
         <li>Founding rate locked in for life after the pilot</li>
       </ul>
@@ -263,19 +275,19 @@
 
 <section>
   <div class="wrap">
-    <h2>Questions contractors actually ask</h2>
+    <h2>Questions salon &amp; beauty bar owners actually ask</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>Will this feel robotic to my customers?</h3>
-        <p>It's built to sound like a real front-office conversation, not a phone tree. And it only ever picks up calls you'd otherwise miss — it's a safety net, not a replacement for you.</p>
+        <h3>Will this feel robotic to my clients?</h3>
+        <p>It's built to sound like a real front-desk conversation, not a phone tree. And it only ever picks up calls you'd otherwise miss — it's a safety net, not a replacement for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I have to switch booking software?</h3>
+        <p>No. During the pilot it books into a simple shared calendar — we'll figure out together whether it needs to connect to whatever you already use.</p>
       </div>
       <div class="faq-item">
         <h3>Do I have to give you access to my phone or accounts?</h3>
         <p>No. You forward missed calls to a dedicated number in about 30 seconds — your real number never changes anywhere, and it's fully reversible.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What if it books something I can't actually do?</h3>
-        <p>During the pilot, it doesn't auto-book — it collects the details and requests a time, and you confirm before anything's locked in.</p>
       </div>
       <div class="faq-item">
         <h3>What happens after the 3-month pilot?</h3>
@@ -288,7 +300,7 @@
 <footer>
   <div class="wrap">
     <p>Ironline — Los Angeles</p>
-    <p>Built for independent fence, gate, and wrought iron contractors.</p>
+    <p>Built for independent nail salons, beauty bars, and personal care studios.</p>
     <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary">Claim a Founding Spot</a>
     <p class="email">hello@getironline.io &nbsp;·&nbsp; (626) 223-1848</p>
     <p class="email">1437 E Windsor Rd, Glendale, CA 91205</p>
