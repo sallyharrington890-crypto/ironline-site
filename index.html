@@ -6,44 +6,51 @@
 <title>Ironline — Never Miss Another Booking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --forest: #445640;
-    --forest-light: #64775a;
-    --pink: #d98fa0;
-    --pink-dark: #bf7387;
-    --cream: #faf5ec;
-    --cream-card: #fffaf2;
-    --ink: #3b3227;
-    --muted: #8e8370;
-    --line: #e7ddc9;
+    --ink: #241f1a;
+    --cream: #faf7f1;
+    --cream-card: #ffffff;
+    --forest: #16301f;
+    --forest-deep: #0d2015;
+    --forest-light: #2c4a37;
+    --pink: #cf94a0;
+    --pink-dark: #a5606d;
+    --pink-soft: #f1dde1;
+    --gold: #b3915c;
+    --gold-light: #dcc79a;
+    --muted: #7c6f60;
+    --line: #ece3d3;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--cream);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, .logo { font-family: 'Playfair Display', Georgia, serif; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; }
 
+  /* ---------- header ---------- */
   header.top {
     background: var(--forest);
     color: #fff;
-    padding: 18px 0;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(179,145,92,0.35);
   }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .logo { font-size: 21px; font-weight: 700; letter-spacing: 0.3px; display: flex; align-items: center; gap: 8px; }
+  .logo { font-size: 22px; font-weight: 600; letter-spacing: 0.3px; display: flex; align-items: center; gap: 9px; }
   .logo span { color: var(--pink); }
-  .logo svg { flex-shrink: 0; }
-  .header-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .tag { font-size: 13px; color: #e7ecdf; }
+  .logo svg { flex-shrink: 0; color: var(--gold-light); }
+  .header-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .tag { font-size: 13px; color: #e4e0d4; letter-spacing: 0.2px; }
   .lang-select {
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.08);
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(220,199,154,0.45);
     border-radius: 7px;
     padding: 6px 10px;
     font-size: 13px;
@@ -52,25 +59,50 @@
   }
   .lang-select option { color: var(--ink); background: #fff; }
 
+  /* ---------- hero ---------- */
   .hero {
-    background: linear-gradient(180deg, var(--forest) 0%, var(--forest-light) 100%);
+    position: relative;
+    background: linear-gradient(165deg, var(--forest) 0%, var(--forest-deep) 100%);
     color: #fff;
-    padding: 60px 0 48px;
+    padding: 76px 0 60px;
     text-align: center;
+    overflow: hidden;
   }
-  .leaf-flourish { display: flex; align-items: center; justify-content: center; gap: 14px; opacity: 0.6; margin-bottom: 18px; }
-  .leaf-flourish .fl-line { width: 46px; height: 1px; background: currentColor; }
+  .hero .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.28;
+    pointer-events: none;
+  }
+  .hero .blob.b1 { width: 340px; height: 340px; background: var(--pink); top: -120px; right: -80px; }
+  .hero .blob.b2 { width: 260px; height: 260px; background: var(--gold); bottom: -100px; left: -60px; opacity: 0.18; }
+  .hero .bloom {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    color: var(--gold-light);
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .leaf-flourish { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 22px; color: var(--gold-light); }
+  .leaf-flourish .fl-line { width: 44px; height: 1px; background: linear-gradient(to right, transparent, currentColor); }
+  .leaf-flourish .fl-line.right { background: linear-gradient(to left, transparent, currentColor); }
+  .leaf-flourish .fl-dot { width: 6px; height: 6px; background: currentColor; transform: rotate(45deg); }
   .hero h1 {
-    font-size: 36px;
-    line-height: 1.3;
-    margin-bottom: 16px;
-    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.28;
+    margin-bottom: 18px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
   }
   .hero p.sub {
     font-size: 18px;
-    color: #eef1e6;
+    color: #ece7d9;
     max-width: 560px;
-    margin: 0 auto 32px;
+    margin: 0 auto 34px;
+    font-weight: 400;
   }
   .cta-row {
     display: flex;
@@ -79,149 +111,196 @@
     flex-wrap: wrap;
   }
   .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 14px 26px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15.5px;
     text-decoration: none;
-    transition: transform 0.1s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    letter-spacing: 0.1px;
   }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--pink); color: #fff; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--pink); color: #fff; box-shadow: 0 8px 20px rgba(165,96,109,0.28); }
   .btn-primary:hover { background: var(--pink-dark); }
-  .btn-secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+  .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(220,199,154,0.55); }
+  .btn-secondary:hover { border-color: var(--gold-light); background: rgba(255,255,255,0.06); }
+  .text-note {
+    margin-top: 22px;
+    font-size: 14px;
+    color: #d9d2bf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+  .text-note svg { color: var(--pink); flex-shrink: 0; }
 
-  section { padding: 56px 0; }
-  section.alt { background: var(--cream-card); }
+  /* ---------- sections ---------- */
+  section { padding: 64px 0; position: relative; }
+  section.alt {
+    background: var(--cream-card);
+    background-image: radial-gradient(circle, #e9dfcb 1px, transparent 1px);
+    background-size: 26px 26px;
+    background-position: -6px -6px;
+  }
+  section.alt .wrap { background: transparent; }
 
-  .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 0 36px; color: var(--forest-light); opacity: 0.55; }
-  .divider .d-line { width: 56px; height: 1px; background: currentColor; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 0 40px; color: var(--gold); }
+  .divider .d-line { width: 52px; height: 1px; background: currentColor; opacity: 0.55; }
+  .divider .d-dot { width: 7px; height: 7px; background: currentColor; transform: rotate(45deg); }
 
   .demo-box {
-    background: #fff;
+    background: var(--cream-card);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 30px;
+    border-radius: 16px;
+    padding: 34px;
     max-width: 620px;
     margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(68,86,64,0.08);
+    box-shadow: 0 20px 45px rgba(22,48,31,0.09);
   }
   .demo-box .tag-note {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: var(--cream);
-    color: var(--forest);
-    font-size: 12px;
+    gap: 7px;
+    background: var(--forest);
+    color: #fff;
+    font-size: 11.5px;
     font-weight: 700;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
-    padding: 5px 12px;
+    padding: 6px 13px;
     border-radius: 999px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .transcript { text-align: left; }
-  .transcript .line { margin-bottom: 12px; font-size: 15px; }
+  .transcript .line { margin-bottom: 13px; font-size: 15px; }
   .transcript .who { font-weight: 700; color: var(--forest); }
   .transcript .who.ai { color: var(--pink-dark); }
-  .demo-box p.note { color: var(--muted); font-size: 14px; margin-top: 18px; text-align: center; }
+  .demo-box p.note { color: var(--muted); font-size: 14px; margin-top: 20px; text-align: center; }
+  .demo-box p.note a { color: var(--forest); }
 
   h2 {
-    font-size: 28px;
+    font-size: 29px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--forest);
-    font-weight: 700;
+    font-weight: 600;
   }
   .section-sub {
     text-align: center;
     color: var(--muted);
     max-width: 520px;
-    margin: 0 auto 36px;
+    margin: 0 auto 40px;
     font-size: 16px;
   }
+  .section-sub a { color: var(--forest); }
 
+  /* ---------- steps ---------- */
   .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 26px;
   }
   .step {
     background: var(--cream-card);
     border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 28px 20px;
+    border-radius: 14px;
+    padding: 32px 22px;
     text-align: center;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
+  .step:hover { box-shadow: 0 16px 32px rgba(22,48,31,0.08); transform: translateY(-3px); }
   .step .icon {
-    width: 52px; height: 52px;
+    width: 58px; height: 58px;
     border-radius: 50%;
-    background: var(--forest);
-    color: #fff;
+    background: var(--cream);
+    border: 1.5px solid var(--forest);
+    color: var(--forest);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
+    margin: 0 auto 18px;
   }
-  .step:nth-child(2) .icon { background: var(--pink); }
-  .step:nth-child(3) .icon { background: var(--forest-light); }
-  .step h3 { font-size: 17px; margin-bottom: 8px; color: var(--forest); font-weight: 700; }
-  .step p { font-size: 14px; color: var(--muted); }
+  .step:nth-child(2) .icon { border-color: var(--pink-dark); color: var(--pink-dark); }
+  .step:nth-child(3) .icon { border-color: var(--gold); color: var(--gold); }
+  .step h3 { font-size: 17px; margin-bottom: 9px; color: var(--forest); font-weight: 600; font-family: 'Playfair Display', Georgia, serif; }
+  .step p { font-size: 14.5px; color: var(--muted); }
 
+  /* ---------- pilot ---------- */
   .pilot {
-    background: var(--forest);
+    background: linear-gradient(165deg, var(--forest) 0%, var(--forest-deep) 100%);
     color: #fff;
-    border-radius: 18px;
-    padding: 42px 32px;
+    border-radius: 20px;
+    padding: 48px 36px;
     max-width: 640px;
     margin: 0 auto;
     text-align: center;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(179,145,92,0.4);
   }
+  .pilot::before, .pilot::after {
+    content: "";
+    position: absolute;
+    width: 30px; height: 30px;
+    border-top: 1px solid var(--gold-light);
+    top: 18px;
+  }
+  .pilot::before { left: 18px; border-left: 1px solid var(--gold-light); }
+  .pilot::after { right: 18px; border-right: 1px solid var(--gold-light); }
   .pilot .badge {
     display: inline-block;
     background: var(--pink);
     color: #fff;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
-    padding: 5px 14px;
+    padding: 6px 15px;
     border-radius: 999px;
-    margin-bottom: 18px;
-    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
   }
-  .pilot h2 { color: #fff; margin-bottom: 20px; }
-  .pilot ul { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 28px; }
+  .pilot h2 { color: #fff; margin-bottom: 22px; }
+  .pilot ul { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 30px; }
   .pilot li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.14);
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(220,199,154,0.18);
     font-size: 15px;
     display: flex;
-    gap: 10px;
+    gap: 11px;
   }
   .pilot li:last-child { border-bottom: none; }
-  .pilot li::before { content: "✓"; color: var(--pink); font-weight: 800; }
-  .pilot .price-line { font-size: 15px; color: #eef1e6; margin-bottom: 24px; }
+  .pilot li::before { content: "✓"; color: var(--gold-light); font-weight: 700; }
+  .pilot .price-line { font-size: 15px; color: #ece7d9; margin-bottom: 26px; }
   .pilot .price-line strong { color: #fff; font-size: 20px; }
 
+  /* ---------- faq ---------- */
   .faq { max-width: 640px; margin: 0 auto; }
-  .faq-item { margin-bottom: 22px; padding-left: 18px; border-left: 2px solid var(--pink); }
-  .faq-item h3 { font-size: 16px; color: var(--forest); margin-bottom: 6px; font-weight: 700; }
+  .faq-item { margin-bottom: 24px; padding-left: 20px; border-left: 2px solid var(--pink); }
+  .faq-item h3 { font-size: 16.5px; color: var(--forest); margin-bottom: 7px; font-weight: 600; font-family: 'Playfair Display', Georgia, serif; }
   .faq-item p { color: var(--muted); font-size: 15px; }
 
+  /* ---------- footer ---------- */
   footer {
-    background: var(--forest);
-    color: #eef1e6;
+    background: var(--forest-deep);
+    color: #e4e0d4;
     text-align: center;
-    padding: 40px 0;
+    padding: 46px 0 40px;
     font-size: 14px;
   }
-  footer .btn { margin-top: 16px; }
-  footer .email { margin-top: 14px; color: #d9c9cf; }
+  footer .btn { margin-top: 18px; }
+  footer .email { margin-top: 14px; color: #cdb9a9; }
+  footer .email a { color: #e8d4c4; }
 
+  @media (max-width: 900px) {
+    .hero .bloom { display: none; }
+  }
   @media (max-width: 640px) {
     .steps { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 28px; }
+    .hero h1 { font-size: 29px; }
+    .hero { padding: 56px 0 44px; }
     header.top .wrap { justify-content: center; text-align: center; }
+    .pilot { padding: 38px 22px; }
   }
 </style>
 </head>
@@ -230,7 +309,7 @@
 <header class="top">
   <div class="wrap">
     <div class="logo">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg>
       Iron<span>line</span>
     </div>
     <div class="header-right">
@@ -248,26 +327,43 @@
 </header>
 
 <section class="hero">
-  <div class="wrap">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <svg class="bloom" width="150" height="260" viewBox="0 0 150 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M75 250 C75 190 68 150 60 110" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+    <path d="M60 150 C40 145 26 128 22 108" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+    <path d="M63 120 C82 112 96 94 100 74" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+    <ellipse cx="75" cy="55" rx="16" ry="26" transform="rotate(-10 75 55)" stroke="currentColor" stroke-width="1" opacity="0.85"/>
+    <ellipse cx="52" cy="72" rx="14" ry="23" transform="rotate(-46 52 72)" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+    <ellipse cx="98" cy="72" rx="14" ry="23" transform="rotate(46 98 72)" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+    <ellipse cx="60" cy="98" rx="12" ry="20" transform="rotate(-72 60 98)" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+    <ellipse cx="90" cy="98" rx="12" ry="20" transform="rotate(72 90 98)" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+    <circle cx="75" cy="60" r="4" fill="currentColor" opacity="0.9"/>
+  </svg>
+  <div class="wrap hero-inner">
     <div class="leaf-flourish">
       <span class="fl-line"></span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg>
-      <span class="fl-line"></span>
+      <span class="fl-dot"></span>
+      <span class="fl-line right"></span>
     </div>
     <h1 data-i18n="hero_h1">Every missed call is a client you never see again.</h1>
-    <p class="sub" data-i18n="hero_sub">Ironline answers the phone while you're mid-appointment, books the slot straight into your calendar, and texts you a confirmation — so a busy chair schedule stops costing you bookings.</p>
+    <p class="sub" data-i18n="hero_sub">Ironline answers the phone — or a text — while you're mid-appointment, books the slot straight into your calendar, and confirms it right back. So a busy chair schedule stops costing you bookings.</p>
     <div class="cta-row">
-      <a href="tel:+16268738550" class="btn btn-secondary" data-i18n="cta_call">Call the Live Demo: (626) 873-8550</a>
+      <a href="tel:+16268738550" class="btn btn-secondary" data-i18n="cta_call">Call or Text the Demo: (626) 873-8550</a>
       <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary" data-i18n="cta_book">Book a 15-Min Call</a>
+    </div>
+    <div class="text-note">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span data-i18n="hero_text_note">Your current number doesn't change — it just quietly forwards missed calls to this line, and clients can text this same line directly to book. No new app for anyone.</span>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <div class="divider"><span class="d-line"></span><span class="d-dot"></span><span class="d-line"></span></div>
     <h2 data-i18n="s2_h2">What a call actually sounds like</h2>
-    <p class="section-sub" data-i18n="s2_sub">Call <a href="tel:+16268738550">(626) 873-8550</a> right now to hear it live, or read a sample of the kind of conversation it's built to handle below.</p>
+    <p class="section-sub" data-i18n="s2_sub">Call or text <a href="tel:+16268738550">(626) 873-8550</a> right now to try it live, or read a sample conversation below.</p>
     <div class="demo-box">
       <span class="tag-note">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
@@ -286,7 +382,7 @@
 
 <section>
   <div class="wrap">
-    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <div class="divider"><span class="d-line"></span><span class="d-dot"></span><span class="d-line"></span></div>
     <h2 data-i18n="s3_h2">How it works</h2>
     <p class="section-sub" data-i18n="s3_sub">No new phone number to give out, no complicated setup on your end.</p>
     <div class="steps">
@@ -332,7 +428,7 @@
 
 <section>
   <div class="wrap">
-    <div class="divider"><span class="d-line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 17 4 9C4 5 7 3 12 3C17 3 20 5 20 9C20 17 12 21 12 21Z"/><path d="M12 21V3"/></svg><span class="d-line"></span></div>
+    <div class="divider"><span class="d-line"></span><span class="d-dot"></span><span class="d-line"></span></div>
     <h2 data-i18n="faq_h2">Questions salon &amp; beauty bar owners actually ask</h2>
     <div class="faq">
       <div class="faq-item">
@@ -361,8 +457,7 @@
     <p data-i18n="footer_line2">Built for independent nail salons, beauty bars, and personal care studios.</p>
     <a href="https://api.leadconnectorhq.com/widget/booking/J5cymxyU3rgm11F6Yvov" class="btn btn-primary" data-i18n="pilot_cta">Claim a Founding Spot</a>
     <p class="email">hello@getironline.io &nbsp;·&nbsp; (626) 223-1848</p>
-    <p class="email">1437 E Windsor Rd, Glendale, CA 91205</p>
-    <p class="email"><a href="legal.html" style="color:#d9c9cf;" data-i18n="footer_terms">Terms of Service</a> &nbsp;·&nbsp; <a href="legal.html#privacy" style="color:#d9c9cf;" data-i18n="footer_privacy">Privacy Policy</a></p>
+    <p class="email"><a href="legal.html" data-i18n="footer_terms">Terms of Service</a> &nbsp;·&nbsp; <a href="legal.html#privacy" data-i18n="footer_privacy">Privacy Policy</a></p>
   </div>
 </footer>
 
@@ -370,16 +465,17 @@
 
 <script>
 const translations = {
-  en: {},
+  en: { title: "Ironline — Never Miss Another Booking" },
   vi: {
     title: "Ironline — Không Bao Giờ Bỏ Lỡ Lịch Hẹn",
     tag: "Lễ tân tự động cho các tiệm nail và beauty bar tại LA",
     hero_h1: "Mỗi cuộc gọi nhỡ là một khách hàng bạn mất vĩnh viễn.",
-    hero_sub: "Ironline trả lời điện thoại giúp bạn khi đang làm khách, đặt lịch thẳng vào lịch của bạn, và nhắn tin xác nhận cho khách — để lịch làm bận rộn không còn làm bạn mất khách.",
-    cta_call: "Gọi thử Demo trực tiếp: (626) 873-8550",
+    hero_sub: "Ironline trả lời điện thoại — hoặc tin nhắn — giúp bạn khi đang làm khách, đặt lịch thẳng vào lịch của bạn, và xác nhận ngay lập tức. Để lịch làm bận rộn không còn làm bạn mất khách.",
+    cta_call: "Gọi hoặc Nhắn Tin Demo: (626) 873-8550",
     cta_book: "Đặt cuộc gọi 15 phút",
+    hero_text_note: "Số điện thoại hiện tại của bạn không đổi — nó chỉ âm thầm chuyển tiếp cuộc gọi nhỡ đến số này, và khách hàng có thể nhắn tin trực tiếp đến số này để đặt lịch. Không cần ứng dụng mới cho ai cả.",
     s2_h2: "Một cuộc gọi thực tế nghe như thế nào",
-    s2_sub: 'Gọi <a href="tel:+16268738550">(626) 873-8550</a> ngay bây giờ để nghe trực tiếp, hoặc đọc mẫu cuộc trò chuyện bên dưới.',
+    s2_sub: 'Gọi hoặc nhắn tin đến <a href="tel:+16268738550">(626) 873-8550</a> ngay bây giờ để thử trực tiếp, hoặc đọc mẫu cuộc trò chuyện bên dưới.',
     demo_tag: "Mẫu cuộc trò chuyện",
     caller_label: "Khách gọi:",
     ai_label: "Ironline:",
@@ -420,14 +516,15 @@ const translations = {
     footer_privacy: "Chính sách bảo mật"
   },
   hy: {
-    title: "Ironline — Բնաւ մի կորսնցներ ամրագրում մը",
+    title: "Ironline — Երբեք մի՛ կորսնցներ ամրագրում մը",
     tag: "Ինքնաշարժ ընդունարան Լոս Անճելըսի եղունգի եւ գեղեցկութեան սրահներու համար",
     hero_h1: "Ամէն կորսուած զանգ՝ յաճախորդ մըն է, զոր այլեւս պիտի չտեսնես։",
-    hero_sub: "Ironline-ը կը պատասխանէ հեռախօսին մինչ դուն զբաղած ես յաճախորդով, ժամադրութիւնը կ'արձանագրէ ուղղակիօրէն ձեր օրացոյցին մէջ, եւ SMS-ով հաստատում կ'ուղարկէ յաճախորդին։",
-    cta_call: "Զանգահարէ ուղիղ ցուցադրութեան՝ (626) 873-8550",
+    hero_sub: "Ironline-ը կը պատասխանէ հեռախօսին — կամ SMS-ին — մինչ դուն զբաղած ես յաճախորդով, ժամադրութիւնը կ'արձանագրէ ուղղակիօրէն ձեր օրացոյցին մէջ, եւ անմիջապէս կը հաստատէ։",
+    cta_call: "Զանգահարէ կամ SMS ղրկէ Ցուցադրութեան՝ (626) 873-8550",
     cta_book: "Ամրագրէ 15-վայրկեանանոց խօսակցութիւն",
+    hero_text_note: "Ձեր հիմա գործածած համարը չի փոխուիր — ան պարզապէս, առանց աղմուկի, կը փոխանցէ կորսուած զանգերը այս գիծին, եւ յաճախորդները կրնան ուղղակիօրէն SMS ղրկել այս գիծին՝ ամրագրելու համար։ Նոր ծրագիր պէտք չէ ո՛չ մէկուն։",
     s2_h2: "Ինչպէ՞ս կը հնչէ իրական զանգ մը",
-    s2_sub: 'Զանգահարէ <a href="tel:+16268738550">(626) 873-8550</a> հիմա՝ ուղղակիօրէն լսելու համար, կամ կարդա նմուշ խօսակցութիւն մը ներքեւ։',
+    s2_sub: 'Զանգահարէ կամ SMS ղրկէ <a href="tel:+16268738550">(626) 873-8550</a> հիմա՝ ուղղակիօրէն փորձելու համար, կամ կարդա նմուշ խօսակցութիւն մը ներքեւ։',
     demo_tag: "Նմուշ խօսակցութիւն",
     caller_label: "Յաճախորդ.",
     ai_label: "Ironline.",
@@ -471,11 +568,12 @@ const translations = {
     title: "Ironline — Никогда не теряйте запись",
     tag: "Автоматическая ресепшн для нейл- и бьюти-салонов Лос-Анджелеса",
     hero_h1: "Каждый пропущенный звонок — это клиент, которого вы больше не увидите.",
-    hero_sub: "Ironline отвечает на звонки, пока вы заняты клиентом, сразу записывает на приём в ваш календарь и отправляет клиенту СМС-подтверждение — так плотный график перестаёт стоить вам записей.",
-    cta_call: "Позвонить на демо-линию: (626) 873-8550",
+    hero_sub: "Ironline отвечает на звонок — или сообщение — пока вы заняты клиентом, сразу записывает на приём в ваш календарь и сразу же присылает подтверждение. Так плотный график перестаёт стоить вам записей.",
+    cta_call: "Позвонить или написать на демо: (626) 873-8550",
     cta_book: "Записаться на звонок на 15 минут",
+    hero_text_note: "Ваш текущий номер не меняется — он просто незаметно переадресует пропущенные звонки на эту линию, а клиенты могут написать прямо на неё, чтобы записаться. Никаких новых приложений ни для кого.",
     s2_h2: "Как звучит реальный звонок",
-    s2_sub: 'Позвоните <a href="tel:+16268738550">(626) 873-8550</a> прямо сейчас, чтобы услышать вживую, или прочитайте пример разговора ниже.',
+    s2_sub: 'Позвоните или напишите на <a href="tel:+16268738550">(626) 873-8550</a> прямо сейчас, чтобы попробовать вживую, или прочитайте пример разговора ниже.',
     demo_tag: "Пример разговора",
     caller_label: "Клиент:",
     ai_label: "Ironline:",
@@ -519,11 +617,12 @@ const translations = {
     title: "Ironline — 예약을 놓치지 마세요",
     tag: "LA 네일 & 뷰티 살롱을 위한 자동 응대 서비스",
     hero_h1: "놓친 전화 한 통이 곧 다시는 만날 수 없는 고객이 됩니다.",
-    hero_sub: "Ironline은 시술 중에도 대신 전화를 받고, 예약을 바로 캘린더에 기록하며, 고객에게 확인 문자를 보내드립니다 — 바쁜 일정 때문에 예약을 놓치는 일이 없도록.",
-    cta_call: "라이브 데모 전화: (626) 873-8550",
+    hero_sub: "Ironline은 시술 중에도 전화나 문자에 대신 응답하고, 예약을 바로 캘린더에 기록하며, 즉시 확인해드립니다 — 바쁜 일정 때문에 예약을 놓치는 일이 없도록.",
+    cta_call: "전화 또는 문자로 데모 체험: (626) 873-8550",
     cta_book: "15분 상담 예약하기",
+    hero_text_note: "기존 번호는 그대로예요 — 놓친 전화만 조용히 이 번호로 착신 전환되고, 고객은 이 번호로 바로 문자를 보내 예약할 수 있습니다. 누구도 새 앱을 설치할 필요가 없어요.",
     s2_h2: "실제 통화는 이렇게 진행됩니다",
-    s2_sub: '지금 <a href="tel:+16268738550">(626) 873-8550</a>로 전화해서 직접 들어보시거나, 아래 예시 대화를 읽어보세요.',
+    s2_sub: '지금 <a href="tel:+16268738550">(626) 873-8550</a>로 전화하거나 문자를 보내 직접 체험해보시거나, 아래 예시 대화를 읽어보세요.',
     demo_tag: "예시 대화",
     caller_label: "고객:",
     ai_label: "Ironline:",
@@ -567,11 +666,12 @@ const translations = {
     title: "Ironline — Nunca Pierdas Otra Cita",
     tag: "Recepción automatizada para salones de uñas y belleza en LA",
     hero_h1: "Cada llamada perdida es un cliente que no vuelves a ver.",
-    hero_sub: "Ironline contesta el teléfono mientras estás con un cliente, agenda la cita directamente en tu calendario y le envía un mensaje de confirmación — para que un horario ocupado deje de costarte clientes.",
-    cta_call: "Llamar a la demo en vivo: (626) 873-8550",
+    hero_sub: "Ironline contesta la llamada — o el mensaje de texto — mientras estás con un cliente, agenda la cita directamente en tu calendario y confirma al instante. Para que un horario ocupado deje de costarte clientes.",
+    cta_call: "Llama o escribe a la demo: (626) 873-8550",
     cta_book: "Agendar una llamada de 15 minutos",
+    hero_text_note: "Tu número actual no cambia — solo desvía en silencio las llamadas perdidas a esta línea, y tus clientas pueden escribirle directamente a esta misma línea para agendar. Nadie necesita descargar una app nueva.",
     s2_h2: "Así suena una llamada real",
-    s2_sub: 'Llama al <a href="tel:+16268738550">(626) 873-8550</a> ahora mismo para escucharlo en vivo, o lee un ejemplo de conversación abajo.',
+    s2_sub: 'Llama o envía un mensaje al <a href="tel:+16268738550">(626) 873-8550</a> ahora mismo para probarlo en vivo, o lee un ejemplo de conversación abajo.',
     demo_tag: "Conversación de ejemplo",
     caller_label: "Cliente:",
     ai_label: "Ironline:",
